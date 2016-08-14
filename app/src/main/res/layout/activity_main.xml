@@ -3,69 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alanpasi.bulletmuzzleenergy.MainActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="com.alanpasi.bulletmuzzleenergy.MainActivity">
 
-    <include layout="@layout/toolbar_main"
-        android:id="@+id/main_toolbar"/>
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/toolbar_main" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etMass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/lbl_WeightUS"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etVelocity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_VelocityUS"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textSize="20sp"/>
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
+        android:id="@+id/tvEnergy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lbl_WeightUS"
-        android:id="@+id/tvMass"
         android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/etMass"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/lbl_VelocityUS"
-        android:id="@+id/tvVelocity"
-        android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textAlignment="center" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/etVelocity"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/lbl_EnergyUS"
-        android:id="@+id/tvEnergy"
-        android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
+        android:id="@+id/tvEnergyResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvEnergyResult"
         android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
         android:textAlignment="center"
-        android:text="0" />
+        android:textSize="20sp" />
 
 </LinearLayout>

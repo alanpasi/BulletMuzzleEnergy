@@ -6,5 +6,7 @@
     <string name="lbl_VelocitySI">Velocity of the Bullet (m/s)</string>
     <string name="lbl_EnergyUS">Muzzle Energy (ft-lbf)</string>
     <string name="lbl_EnergySI">Muzzle Energy (J)</string>
+    <string name="setting">Configuração</string>
+    <string name="about">Sobre</string>
 
 </resources>

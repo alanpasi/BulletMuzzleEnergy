@@ -4,6 +4,10 @@ package com.alanpasi.bulletmuzzleenergy;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,9 +15,9 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity  {
 
-    Toolbar mToolbar;
+    private Toolbar mToolbar;
 
     private EditText etMass;
     private EditText etVelocity;
@@ -36,21 +40,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etVelocity = (EditText) findViewById(R.id.etVelocity);
         tvEnergyResult = (TextView) findViewById(R.id.tvEnergyResult);
 
+        etMass.addTextChangedListener(textWatcher);
+        etVelocity.addTextChangedListener(textWatcher);
 
         if (savedInstanceState != null) {
             tvEnergyResult.setText(savedInstanceState.getString(STATE_ENERGY));
 //            Toast.makeText(MainActivity.this, "savedInstanceState é != null", Toast.LENGTH_SHORT).show();
         }
 
-        tvEnergyResult.setOnClickListener(this);
     }
+
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (etMass.getText().toString().length() > 0 && etVelocity.getText().toString().length() > 0) {
+                CalculateEnergy();
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     @Override
     protected void onResume() {
         super.onResume();
 
 //        CalculateEnergy();
-
 //        Toast.makeText(MainActivity.this, "onResume", Toast.LENGTH_SHORT).show();
     }
 
@@ -62,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(savedInstantState);
     }
 
+
     @Override
-    public void onClick(View view) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
 
-        CalculateEnergy();
-
+        return true;
     }
 
     public void CalculateEnergy() {
@@ -77,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mass = Double.parseDouble(etMass.getText().toString());
         velocity = Double.parseDouble(etVelocity.getText().toString());
 
-        result = ((1d/2d) * (mass * (velocity * velocity))) * FOOT_POUND_FORCE;
+        result = ((1d / 2d) * (mass * (velocity * velocity))) * FOOT_POUND_FORCE;
 
 //        tvEnergyResult.setText(etMass.getText().toString());
 
