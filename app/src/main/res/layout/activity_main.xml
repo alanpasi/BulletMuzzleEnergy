@@ -17,14 +17,17 @@
         android:layout_height="wrap_content"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/etMass"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/lbl_WeightUS"
             android:inputType="numberDecimal"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp">
+
+        </android.support.design.widget.TextInputEditText>
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -32,14 +35,17 @@
         android:layout_height="wrap_content"
         app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/etVelocity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/lbl_VelocityUS"
             android:inputType="numberDecimal"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp">
+
+        </android.support.design.widget.TextInputEditText>
+
     </android.support.design.widget.TextInputLayout>
 
     <TextView
