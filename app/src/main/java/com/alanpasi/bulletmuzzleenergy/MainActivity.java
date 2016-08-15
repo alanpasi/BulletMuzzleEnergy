@@ -1,6 +1,7 @@
 package com.alanpasi.bulletmuzzleenergy;
 
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,16 +9,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private Toolbar mToolbar;
+    Toolbar mToolbar;
 
     private EditText etMass;
     private EditText etVelocity;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity  {
             if (etMass.getText().toString().length() > 0 && etVelocity.getText().toString().length() > 0) {
                 CalculateEnergy();
             }
+            else{
+                tvEnergyResult.setText(null);
+            }
 
         }
 
@@ -93,6 +97,14 @@ public class MainActivity extends AppCompatActivity  {
         menuInflater.inflate(R.menu.menu_main, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        View view = findViewById(R.id.main_toolbar);
+        Snackbar.make(view, item.getTitle(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Toast.makeText(this, "Menu selecionado " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
     }
 
     public void CalculateEnergy() {
